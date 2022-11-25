@@ -8,8 +8,9 @@
         android:id="@+id/recipeListFragment"
         android:name="com.example.foodapps.RecipeListFragment"
         android:label="RecipeListFragment" >
+
         <action
-            android:id="@+id/viewRecipe"
+            android:id="@+id/action_recipeListFragment_to_recipeFragment2"
             app:destination="@id/recipeFragment" />
     </fragment>
     <fragment

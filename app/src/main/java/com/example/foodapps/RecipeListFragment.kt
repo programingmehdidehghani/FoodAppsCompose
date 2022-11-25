@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 
 
 class RecipeListFragment : Fragment(){
@@ -35,14 +36,18 @@ class RecipeListFragment : Fragment(){
              setContent {
                  Column(modifier = Modifier.padding(16.dp)) {
                      Text(
-                         text = "Recipe List",
+                         text = "Recipe List Fragment",
                          style = TextStyle(
                              fontSize = 21.sp
                          )
                      )
                      Spacer(modifier = Modifier.padding(10.dp))
-                     Button(onClick = { /*TODO*/ }) {
-                         
+                     Button(
+                         onClick = {
+                              findNavController().navigate(R.id.action_recipeListFragment_to_recipeFragment2)
+                           }
+                     ) {
+                       Text(text = "to recipe fragment")
                      }
                  }
              }
