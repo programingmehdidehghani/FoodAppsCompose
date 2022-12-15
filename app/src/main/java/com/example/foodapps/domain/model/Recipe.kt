@@ -16,7 +16,7 @@ data class Recipe(
     val description: String? = null,
     val cookingInstructions: String? = null,
     val ingredients: List<String> = listOf(),
-    val dataAdded: String? = null,
-    
+    val dateAdded: String? = null,
+    val dateUpdated: String? = null
 ) : Parcelable{
 }
