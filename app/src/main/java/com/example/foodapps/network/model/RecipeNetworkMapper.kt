@@ -32,10 +32,14 @@ class RecipeNetworkMapper : EntityMapper<RecipeNetworkEntity,Recipe> {
             sourceUrl = domainModel.sourceUrl,
             description = domainModel.description,
             cookingInstructions = domainModel.cookingInstructions,
-            ingredients = domainModel.ingredients?: listOf(),
+            ingredients = domainModel.ingredients,
             dateAdded = domainModel.dateAdded,
             dateUpdated = domainModel.dateUpdated
         )
+    }
+
+    fun fromEntityList(initial: List<RecipeNetworkEntity>): List<Recipe>{
+        return initial.map { mapFromEntity(it) }
     }
 
 
