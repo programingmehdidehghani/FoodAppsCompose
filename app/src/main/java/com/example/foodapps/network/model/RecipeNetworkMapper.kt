@@ -15,7 +15,10 @@ class RecipeNetworkMapper : EntityMapper<RecipeNetworkEntity,Recipe> {
             publisher = entity.publisher,
             sourceUrl = entity.sourceUrl,
             description = entity.description,
-            cookingInstructions = entity.cookingInstructions
+            cookingInstructions = entity.cookingInstructions,
+            ingredients = entity.ingredients?: listOf(),
+            dateAdded = entity.dateAdded,
+            dateUpdated = entity.dateUpdated
         )
     }
 
