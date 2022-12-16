@@ -12,6 +12,9 @@ class RecipeNetworkEntity(
     @SerializedName("publisher")
     var publisher: String? = null,
 
+    @SerializedName("featured_image")
+    var featuredImage: String? = null,
+
     @SerializedName("rating")
     var rating: Int? = null,
 
@@ -23,5 +26,14 @@ class RecipeNetworkEntity(
 
     @SerializedName("cooking_instructions")
     var cookingInstructions: String? = null,
+
+    @SerializedName("ingredients")
+    var ingredients: List<String>? = null,
+
+    @SerializedName("date_added")
+    var dateAdded: String? = null,
+
+    @SerializedName("date_updated")
+    var dateUpdated: String? = null,
 ) {
 }
