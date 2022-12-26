@@ -42,5 +42,9 @@ class RecipeNetworkMapper : EntityMapper<RecipeNetworkEntity,Recipe> {
         return initial.map { mapFromEntity(it) }
     }
 
+    fun toEntityList(initial: List<Recipe>): List<RecipeNetworkEntity>{
+        return initial.map { mapToEntity(it) }
+    }
+
 
 }
