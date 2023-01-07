@@ -12,10 +12,10 @@ class RecipeRepository_ImpI (
 ): RecipeRepository {
     override suspend fun search(token: String, id: Int, query: String):
       List<Recipe> {
-        val result = recipeService.search(token,id,query)
+        return mapper.toDomainList(recipeService.search(token,id,query).recipes)
     }
 
     override suspend fun get(token: String, id: Int): Recipe {
-        TODO("Not yet implemented")
+        return mapper.mapToDomainModel(recipeService.get(token,id))
     }
 }
