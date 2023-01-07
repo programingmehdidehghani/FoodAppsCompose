@@ -1,6 +1,6 @@
 package com.example.foodapps.domain.util
 
-interface EntityMapper <Entity,DomainModel> {
+interface DomainMapper <Entity,DomainModel> {
 
     fun mapFromEntity(entity: Entity) : DomainModel
 

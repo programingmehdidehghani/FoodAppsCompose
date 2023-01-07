@@ -1,9 +1,9 @@
 package com.example.foodapps.network.model
 
 import com.example.foodapps.domain.model.Recipe
-import com.example.foodapps.domain.util.EntityMapper
+import com.example.foodapps.domain.util.DomainMapper
 
-class RecipeNetworkMapper : EntityMapper<RecipeNetworkEntity,Recipe> {
+class RecipeNetworkMapper : DomainMapper<RecipeNetworkEntity,Recipe> {
 
 
     override fun mapFromEntity(entity: RecipeNetworkEntity): Recipe {
