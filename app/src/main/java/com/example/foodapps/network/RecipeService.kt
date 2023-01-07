@@ -1,6 +1,6 @@
 package com.example.foodapps.network
 
-import com.example.foodapps.network.model.RecipeNetworkEntity
+import com.example.foodapps.network.model.RecipeDto
 import com.example.foodapps.network.responses.RecipeSearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -19,5 +19,5 @@ interface RecipeService {
     suspend fun get(
         @Header("Authorization") token: String,
         @Query("id") id : Int
-    ) : RecipeNetworkEntity
+    ) : RecipeDto
 }

@@ -1,9 +1,8 @@
 package com.example.foodapps.network.model
 
-import android.content.BroadcastReceiver
 import com.google.gson.annotations.SerializedName
 
-class RecipeNetworkEntity (
+data class RecipeDto (
     @SerializedName("pk")
     var pk: Int? = null,
 
