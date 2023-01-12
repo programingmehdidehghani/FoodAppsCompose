@@ -42,9 +42,9 @@ class RecipeListFragment : Fragment(){
                      Button(
                          onClick = {
                               //findNavController().navigate(R.id.action_recipeListFragment_to_recipeFragment2)
-                             val navHostFragment =
+                            /* val navHostFragment =
                                  requireContext().getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment)
-                             val navController: NavController = navHostFragment.getNavController()
+                             val navController: NavController = navHostFragment.getNavController()*/
                            }
                      ) {
                        Text(text = "to recipe fragment")
