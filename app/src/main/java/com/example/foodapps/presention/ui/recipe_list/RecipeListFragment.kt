@@ -1,6 +1,5 @@
-package com.example.foodapps
+package com.example.foodapps.presention.ui.recipe_list
 
-import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,10 +15,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
-
-
-
 
 
 class RecipeListFragment : Fragment(){

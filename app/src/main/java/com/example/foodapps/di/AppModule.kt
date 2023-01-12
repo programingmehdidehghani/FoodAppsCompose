@@ -1,7 +1,7 @@
 package com.example.foodapps.di
 
 import android.content.Context
-import com.example.foodapps.BaseApplication
+import com.example.foodapps.presention.ui.BaseApplication
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +15,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideApplication(@ApplicationContext app: Context) : BaseApplication{
+    fun provideApplication(@ApplicationContext app: Context) : BaseApplication {
         return app as BaseApplication
     }
 
