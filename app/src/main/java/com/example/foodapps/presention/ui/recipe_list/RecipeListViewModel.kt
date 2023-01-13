@@ -13,13 +13,25 @@ import javax.inject.Named
 class RecipeListViewModel
 constructor(
     private val repository: RecipeRepository,
+    private @Named("auth_token") val token: String
 ) : ViewModel() {
 
     private val _recipes: MutableLiveData<List<Recipe>> = MutableLiveData()
     val recipe: LiveData<List<Recipe>> = _recipes
 
     init {
+        newSearch()
+    }
 
+    fun newSearch(){
+        viewModelScope.launch {
+            val result = repository.search(
+                token = token,
+                page = 1,
+                query = "chicken"
+            )
+            _recipes.value = result
+        }
     }
 
 }
