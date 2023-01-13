@@ -60,6 +60,8 @@ fun RecipeCard(
                           modifier = Modifier
                               .fillMaxWidth()
                               .wrapContentWidth(Alignment.End)
+                              .align(Alignment.CenterVertically),
+                          style = MaterialTheme.typography.h6
                       )
                   }
            }
