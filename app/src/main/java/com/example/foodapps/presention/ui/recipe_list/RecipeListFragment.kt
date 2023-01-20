@@ -33,15 +33,13 @@ class RecipeListFragment : Fragment(){
     ): View? {
          return ComposeView(requireContext()).apply {
              setContent {
-                 val recipes = viewModel.recipe.value
+                 val recipes = viewModel.recipes.value
 
                  LazyColumn{
                      itemsIndexed(
                         items = recipes
                      ){ index, recipe ->
                        RecipeCard(recipe = recipe, onClick = {})
-
-
                      }
                  }
              }

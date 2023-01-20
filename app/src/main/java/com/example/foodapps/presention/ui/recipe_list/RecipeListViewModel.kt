@@ -1,5 +1,7 @@
 package com.example.foodapps.presention.ui.recipe_list
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,14 +12,16 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Named
 
+@HiltViewModel
 class RecipeListViewModel
 constructor(
     private val repository: RecipeRepository,
     private @Named("auth_token") val token: String
 ) : ViewModel() {
 
-    private val _recipes: MutableLiveData<List<Recipe>> = MutableLiveData()
-    val recipe: LiveData<List<Recipe>> = _recipes
+   /* private val _recipes: MutableLiveData<List<Recipe>> = MutableLiveData()
+    val recipe: LiveData<List<Recipe>> = _recipes*/
+    val recipes : MutableState<List<Recipe>> = mutableStateOf(ArrayList())
 
     init {
         newSearch()
@@ -30,7 +34,7 @@ constructor(
                 page = 1,
                 query = "chicken"
             )
-            _recipes.value = result
+            recipes.value = result
         }
     }
 
