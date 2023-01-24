@@ -12,3 +12,11 @@ enum class FoodCategory(val value: String){
     PIZZA("Pizza"),
     DONUT("Donut")
 }
+
+fun getAllFoodCategories() : List<FoodCategory>{
+    return listOf(FoodCategory.CHICKEN,
+        FoodCategory.BEEF, FoodCategory.SOUP, FoodCategory.DESSERT,
+        FoodCategory.VEGETARIAN, FoodCategory.MILK, FoodCategory.VEGAN,FoodCategory.PIZZA,
+        FoodCategory.DONUT
+    )
+}
