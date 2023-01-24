@@ -20,3 +20,8 @@ fun getAllFoodCategories() : List<FoodCategory>{
         FoodCategory.DONUT
     )
 }
+
+fun getFoodCategory(value: String) : FoodCategory{
+    val map = FoodCategory.values().associateBy(FoodCategory::value)
+    return map[value]!!
+}
