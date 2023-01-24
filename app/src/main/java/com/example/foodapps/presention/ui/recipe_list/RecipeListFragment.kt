@@ -24,6 +24,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.foodapps.presention.componets.RecipeCard
+import com.google.android.material.color.MaterialColors
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -68,17 +69,17 @@ class RecipeListFragment : Fragment(){
                                leadingIcon = {
                                    Icon(Icons.Filled.Search)
                                },
-                               textStyle = TextStyle()
+                               textStyle = TextStyle(color = MaterialTheme.colors.onSurface)
                            )
-                           Spacer(modifier = Modifier.padding(10.dp))
-                           LazyColumn{
-                               itemsIndexed(
-                                   items = recipes
-                               ){ index, recipe ->
-                                   RecipeCard(recipe = recipe, onClick = {})
-                               }
-                           }
+
                        }
+                         LazyColumn{
+                             itemsIndexed(
+                                 items = recipes
+                             ){ index, recipe ->
+                                 RecipeCard(recipe = recipe, onClick = {})
+                             }
+                         }
                      }
                  }
              }
