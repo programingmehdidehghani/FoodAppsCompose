@@ -78,7 +78,9 @@ class RecipeListFragment : Fragment(){
                              for (category in getAllFoodCategories()){
                                   Text(
                                       text = category.value,
-                                      style = MaterialTheme.typography.body2
+                                      style = MaterialTheme.typography.body2,
+                                      color = MaterialTheme.colors.secondary,
+                                      modifier = Modifier.padding(8.dp)
                                   )
                              }
                          }
