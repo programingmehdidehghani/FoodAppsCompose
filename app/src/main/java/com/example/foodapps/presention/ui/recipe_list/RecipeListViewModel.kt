@@ -39,4 +39,7 @@ class RecipeListViewModel
         }
     }
 
+    fun onQueryChanged(query : String){
+        this.query.value = query
+    }
 }
