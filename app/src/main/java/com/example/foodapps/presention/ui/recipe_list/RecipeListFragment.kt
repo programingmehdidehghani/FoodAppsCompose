@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
@@ -55,7 +57,10 @@ class RecipeListFragment : Fragment(){
                                },
                                label = {
                                    Text(text = "Search")
-                               }
+                               },
+                               keyboardOptions = KeyboardOptions(
+                                   keyboardType = KeyboardType.Text
+                               )
                            )
                            Spacer(modifier = Modifier.padding(10.dp))
                            LazyColumn{
