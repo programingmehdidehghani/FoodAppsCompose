@@ -9,11 +9,14 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -59,8 +62,13 @@ class RecipeListFragment : Fragment(){
                                    Text(text = "Search")
                                },
                                keyboardOptions = KeyboardOptions(
-                                   keyboardType = KeyboardType.Text
-                               )
+                                   keyboardType = KeyboardType.Text,
+                                   imeAction = ImeAction.Search
+                               ),
+                               leadingIcon = {
+                                   Icon(Icons.Filled.Search)
+                               },
+                               textStyle = TextStyle()
                            )
                            Spacer(modifier = Modifier.padding(10.dp))
                            LazyColumn{
