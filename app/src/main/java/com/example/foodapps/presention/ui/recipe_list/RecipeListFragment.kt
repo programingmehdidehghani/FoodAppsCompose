@@ -42,7 +42,7 @@ class RecipeListFragment : Fragment(){
                  val recipes = viewModel.recipes.value
                  val query = viewModel.query.value
 
-                 Column {
+                 Row {
                      Surface(
                          modifier = Modifier.fillMaxWidth(),
                          color = MaterialTheme.colors.primary,
@@ -73,13 +73,26 @@ class RecipeListFragment : Fragment(){
                            )
 
                        }
-                         LazyColumn{
-                             itemsIndexed(
-                                 items = recipes
-                             ){ index, recipe ->
-                                 RecipeCard(recipe = recipe, onClick = {})
+
+                         ScrollableTabRow(modifier = Modifier.fillMaxWidth()){
+                             for (category in getAllFoodCategories()){
+                                  Text(
+                                      text = category.value,
+                                      style = MaterialTheme.typography.body2
+                                  )
                              }
                          }
+                             
+
+                     }
+
+                 }
+
+                 LazyColumn{
+                     itemsIndexed(
+                         items = recipes
+                     ){ index, recipe ->
+                         RecipeCard(recipe = recipe, onClick = {})
                      }
                  }
              }
