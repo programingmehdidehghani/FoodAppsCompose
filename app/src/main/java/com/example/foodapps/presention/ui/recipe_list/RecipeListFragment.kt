@@ -45,22 +45,27 @@ class RecipeListFragment : Fragment(){
                        Row(
                            modifier = Modifier.fillMaxWidth()
                        ) {
-
+                           TextField(
+                               modifier = Modifier
+                                   .fillMaxWidth(0.9f)
+                                   .padding(8.dp),
+                               value = "Chicken",
+                               onValueChange = { newValue->
+                                   viewModel.onQueryChanged(newValue)
+                               },
+                               label = {
+                                   Text(text = "Search")
+                               }
+                           )
+                           Spacer(modifier = Modifier.padding(10.dp))
+                           LazyColumn{
+                               itemsIndexed(
+                                   items = recipes
+                               ){ index, recipe ->
+                                   RecipeCard(recipe = recipe, onClick = {})
+                               }
+                           }
                        }
-                     }
-                     TextField(
-                         value = "Chicken",
-                         onValueChange = { newValue->
-                             viewModel.onQueryChanged(newValue)
-                         }
-                     )
-                     Spacer(modifier = Modifier.padding(10.dp))
-                     LazyColumn{
-                         itemsIndexed(
-                             items = recipes
-                         ){ index, recipe ->
-                             RecipeCard(recipe = recipe, onClick = {})
-                         }
                      }
                  }
              }
