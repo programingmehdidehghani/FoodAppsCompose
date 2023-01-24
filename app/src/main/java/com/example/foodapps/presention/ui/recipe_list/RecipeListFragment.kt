@@ -12,6 +12,8 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.text.TextStyle
@@ -35,10 +37,14 @@ class RecipeListFragment : Fragment(){
          return ComposeView(requireContext()).apply {
              setContent {
                  val recipes = viewModel.recipes.value
+                 val query = remember { mutableStateOf("beef") }
+
                  Column {
                      TextField(
                          value = "Chicken",
-                         onValueChange = {}
+                         onValueChange = { newValue->
+                             query.value = newValue
+                         }
                      )
                      Spacer(modifier = Modifier.padding(10.dp))
                      LazyColumn{

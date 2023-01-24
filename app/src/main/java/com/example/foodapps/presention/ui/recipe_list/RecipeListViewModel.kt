@@ -20,9 +20,9 @@ class RecipeListViewModel
     private @Named("auth_token") val token: String
 ) : ViewModel() {
 
-   /* private val _recipes: MutableLiveData<List<Recipe>> = MutableLiveData()
-    val recipe: LiveData<List<Recipe>> = _recipes*/
     val recipes : MutableState<List<Recipe>> = mutableStateOf(ArrayList())
+
+    val query = mutableStateOf("Chicken")
 
     init {
         newSearch()
