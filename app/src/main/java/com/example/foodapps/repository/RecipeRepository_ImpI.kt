@@ -5,8 +5,9 @@ import com.example.foodapps.domain.util.DomainMapper
 import com.example.foodapps.network.RecipeService
 import com.example.foodapps.network.model.RecipeDto
 import com.example.foodapps.network.model.RecipeDtoMapper
+import javax.inject.Inject
 
-class RecipeRepository_ImpI (
+class RecipeRepository_ImpI @Inject constructor(
     private val recipeService: RecipeService,
     private val mapper: RecipeDtoMapper
 ): RecipeRepository {

@@ -15,7 +15,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.foodapps.R
 import com.example.foodapps.domain.model.Recipe
-import com.loadPicture
+import com.example.foodapps.utli.loadPicture
 
 const val DEFAULT_RECIPE_IMAGE = R.drawable.empty_plate
 

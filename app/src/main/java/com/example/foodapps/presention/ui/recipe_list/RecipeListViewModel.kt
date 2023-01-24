@@ -10,11 +10,12 @@ import com.example.foodapps.domain.model.Recipe
 import com.example.foodapps.repository.RecipeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 import javax.inject.Named
 
 @HiltViewModel
 class RecipeListViewModel
-constructor(
+@Inject constructor(
     private val repository: RecipeRepository,
     private @Named("auth_token") val token: String
 ) : ViewModel() {
