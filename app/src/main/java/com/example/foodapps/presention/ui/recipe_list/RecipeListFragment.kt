@@ -4,14 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material.Button
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -41,6 +37,17 @@ class RecipeListFragment : Fragment(){
                  val query = viewModel.query.value
 
                  Column {
+                     Surface(
+                         modifier = Modifier.fillMaxWidth(),
+                         color = MaterialTheme.colors.primary,
+                         elevation = 8.dp
+                     ) {
+                       Row(
+                           modifier = Modifier.fillMaxWidth()
+                       ) {
+
+                       }
+                     }
                      TextField(
                          value = "Chicken",
                          onValueChange = { newValue->
