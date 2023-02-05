@@ -14,6 +14,7 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
@@ -23,6 +24,7 @@ import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.foodapps.presention.componets.FoodCategoryChip
 import com.example.foodapps.presention.componets.RecipeCard
 import com.google.android.material.color.MaterialColors
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,53 +44,60 @@ class RecipeListFragment : Fragment(){
                  val recipes = viewModel.recipes.value
                  val query = viewModel.query.value
 
-                 Row {
+                 Column {
+
+                 }
                      Surface(
                          modifier = Modifier.fillMaxWidth(),
-                         color = MaterialTheme.colors.primary,
+                         color = Color.White,
                          elevation = 8.dp
                      ) {
-                       Row(
-                           modifier = Modifier.fillMaxWidth()
-                       ) {
-                           TextField(
-                               modifier = Modifier
-                                   .fillMaxWidth(0.9f)
-                                   .padding(8.dp),
-                               value = "Chicken",
-                               onValueChange = { newValue->
-                                   viewModel.onQueryChanged(newValue)
-                               },
-                               label = {
-                                   Text(text = "Search")
-                               },
-                               keyboardOptions = KeyboardOptions(
-                                   keyboardType = KeyboardType.Text,
-                                   imeAction = ImeAction.Search
-                               ),
-                               leadingIcon = {
-                                   Icon(Icons.Filled.Search)
-                               },
-                               textStyle = TextStyle(color = MaterialTheme.colors.onSurface)
-                           )
+                         Column {
+                             Row(
+                                 modifier = Modifier.fillMaxWidth()
+                             ) {
+                                 TextField(
+                                     modifier = Modifier
+                                         .fillMaxWidth(0.9f)
+                                         .padding(8.dp),
+                                     value = "Chicken",
+                                     onValueChange = { newValue->
+                                         viewModel.onQueryChanged(newValue)
+                                     },
+                                     label = {
+                                         Text(text = "Search")
+                                     },
+                                     keyboardOptions = KeyboardOptions(
+                                         keyboardType = KeyboardType.Text,
+                                         imeAction = ImeAction.Search
+                                     ),
+                                     leadingIcon = {
+                                         Icon(Icons.Filled.Search)
+                                     },
+                                     textStyle = TextStyle(color = MaterialTheme.colors.onSurface)
+                                 )
 
-                       }
+                             }
+                             ScrollableTabRow(modifier = Modifier.fillMaxWidth())
+                             {
+                                 for (category in getAllFoodCategories()){
+                                     FoodCategoryChip(
+                                         category = category.value,
+                                         onExecuteSearch = {
+                                             viewModel.onQueryChanged(it)
+                                             viewModel.newSearch(it)
+                                         }
+                                     )
 
-                         ScrollableTabRow(modifier = Modifier.fillMaxWidth()){
-                             for (category in getAllFoodCategories()){
-                                  Text(
-                                      text = category.value,
-                                      style = MaterialTheme.typography.body2,
-                                      color = MaterialTheme.colors.secondary,
-                                      modifier = Modifier.padding(8.dp)
-                                  )
+                                 }
+
                              }
                          }
-                             
+
 
                      }
 
-                 }
+
 
                  LazyColumn{
                      itemsIndexed(
