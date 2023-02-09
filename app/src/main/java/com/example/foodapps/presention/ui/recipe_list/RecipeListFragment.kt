@@ -79,12 +79,16 @@ class RecipeListFragment : Fragment(){
                                  )
 
                              }
-                             ScrollableTabRow(modifier = Modifier.fillMaxWidth())
-                             {
+                             ScrollableTabRow(modifier = Modifier.fillMaxWidth()
+                                 .padding(start = 8.dp , bottom = 8.dp)
+                             ) {
                                  for (category in getAllFoodCategories()){
                                      FoodCategoryChip(
                                          category = category.value,
                                          isSelected = selectedCategory == category,
+                                         onSelectedCategoryChanged = {
+                                             viewModel.onSelectedCategoryChanged(it)
+                                         },
                                          onExecuteSearch = viewModel::newSearch
                                      )
 
