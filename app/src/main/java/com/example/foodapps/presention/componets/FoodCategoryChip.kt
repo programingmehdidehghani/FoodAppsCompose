@@ -29,7 +29,10 @@ fun FoodCategoryChip(
             modifier = Modifier
                 .toggleable(
                     value = isSelected,
-                    onValueChange =
+                    onValueChange = {
+                        onSelectedCategoryChanged(category)
+                        onExecuteSearch()
+                    }
                 )
         ) {
             Text(
