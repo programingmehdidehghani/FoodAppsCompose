@@ -43,6 +43,7 @@ class RecipeListFragment : Fragment(){
              setContent {
                  val recipes = viewModel.recipes.value
                  val query = viewModel.query.value
+                 val selectedCategory = viewModel.selectedCategory.value
 
                  Column {
 
@@ -83,10 +84,8 @@ class RecipeListFragment : Fragment(){
                                  for (category in getAllFoodCategories()){
                                      FoodCategoryChip(
                                          category = category.value,
-                                         onExecuteSearch = {
-                                             viewModel.onQueryChanged(it)
-                                             viewModel.newSearch(it)
-                                         }
+                                         isSelected = selectedCategory == category,
+                                         onExecuteSearch = viewModel::newSearch
                                      )
 
                                  }
