@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -44,10 +45,6 @@ class RecipeListFragment : Fragment(){
                  val recipes = viewModel.recipes.value
                  val query = viewModel.query.value
                  val selectedCategory = viewModel.selectedCategory.value
-
-                 Column {
-
-                 }
                      Surface(
                          modifier = Modifier.fillMaxWidth(),
                          color = Color.White,
@@ -61,7 +58,7 @@ class RecipeListFragment : Fragment(){
                                      modifier = Modifier
                                          .fillMaxWidth(0.9f)
                                          .padding(8.dp),
-                                     value = "Chicken",
+                                     value = query,
                                      onValueChange = { newValue->
                                          viewModel.onQueryChanged(newValue)
                                      },
@@ -79,15 +76,19 @@ class RecipeListFragment : Fragment(){
                                  )
 
                              }
-                             ScrollableTabRow(modifier = Modifier.fillMaxWidth()
-                                 .padding(start = 8.dp , bottom = 8.dp)
+                             val scrollState = rememberScrollState()
+                             ScrollableTabRow(modifier = Modifier
+                                 .fillMaxWidth()
+                                 .padding(start = 8.dp, bottom = 8.dp)
                              ) {
+                                 scrollState.scrollTo(viewModel.onChangeCategoryScrollPosition())
                                  for (category in getAllFoodCategories()){
                                      FoodCategoryChip(
                                          category = category.value,
                                          isSelected = selectedCategory == category,
                                          onSelectedCategoryChanged = {
                                              viewModel.onSelectedCategoryChanged(it)
+                                             viewModel.onChangeCategoryScrollPosition(scrollState.value)
                                          },
                                          onExecuteSearch = viewModel::newSearch
                                      )
