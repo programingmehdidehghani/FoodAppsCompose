@@ -79,7 +79,8 @@ class RecipeListFragment : Fragment(){
                              val scrollState = rememberScrollState()
                              ScrollableTabRow(modifier = Modifier
                                  .fillMaxWidth()
-                                 .padding(start = 8.dp, bottom = 8.dp)
+                                 .padding(start = 8.dp, bottom = 8.dp),
+                                 scrollState = scrollState
                              ) {
                                  scrollState.scrollTo(viewModel.onChangeCategoryScrollPosition())
                                  for (category in getAllFoodCategories()){
