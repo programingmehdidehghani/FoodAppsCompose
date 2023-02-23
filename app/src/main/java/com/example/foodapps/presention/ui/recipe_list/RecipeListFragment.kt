@@ -82,7 +82,7 @@ class RecipeListFragment : Fragment(){
                                  .padding(start = 8.dp, bottom = 8.dp),
                                  scrollState = scrollState
                              ) {
-                                 scrollState.scrollTo(viewModel.onChangeCategoryScrollPosition())
+                                 scrollState.scrollTo(viewModel.categoryScrollPosition)
                                  for (category in getAllFoodCategories()){
                                      FoodCategoryChip(
                                          category = category.value,
