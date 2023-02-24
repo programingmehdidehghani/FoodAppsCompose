@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -46,14 +47,19 @@ class RecipeListFragment : Fragment(){
                              viewModel::onChangeCategoryScrollPosition
                      )
 
-                     CircularIndeterminateProgressBar(isDisplayed = loading)
+                     Box(
+                         modifier = Modifier.fillMaxSize()
+                     ) {
 
-                     LazyColumn{
-                         itemsIndexed(
-                             items = recipes
-                         ){ index, recipe ->
-                             RecipeCard(recipe = recipe, onClick = {})
+                         LazyColumn{
+                             itemsIndexed(
+                                 items = recipes
+                             ){ index, recipe ->
+                                 RecipeCard(recipe = recipe, onClick = {})
+                             }
                          }
+                         CircularIndeterminateProgressBar(isDisplayed = loading)
+
                      }
                  }
              }

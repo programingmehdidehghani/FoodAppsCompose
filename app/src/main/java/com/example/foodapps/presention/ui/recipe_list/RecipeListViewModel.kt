@@ -52,6 +52,10 @@ class RecipeListViewModel
         }
     }
 
+    private fun clearSelectedCategory(){
+        selectedCategory.value = null
+    }
+
     fun onQueryChanged(query : String){
         this.query.value = query
     }
