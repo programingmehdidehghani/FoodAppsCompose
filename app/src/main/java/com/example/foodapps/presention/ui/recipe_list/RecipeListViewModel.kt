@@ -39,6 +39,8 @@ class RecipeListViewModel
         viewModelScope.launch {
             loading.value = true
 
+            resetSearchState()
+
             delay(2000)
 
             val result = repository.search(
@@ -52,6 +54,11 @@ class RecipeListViewModel
         }
     }
 
+    private fun resetSearchState(){
+        recipes.value = listOf()
+        if (selectedCategory.value?.value != query.value)
+            clearSelectedCategory()
+    }
     private fun clearSelectedCategory(){
         selectedCategory.value = null
     }
