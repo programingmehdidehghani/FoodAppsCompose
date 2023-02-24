@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.foodapps.presention.componets.CircularIndeterminateProgressBar
 import com.example.foodapps.presention.componets.RecipeCard
 import com.example.foodapps.presention.componets.SearchAppBar
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,6 +30,7 @@ class RecipeListFragment : Fragment(){
                  val recipes = viewModel.recipes.value
                  val query = viewModel.query.value
                  val selectedCategory = viewModel.selectedCategory.value
+                 val loading = viewModel.loading.value
 
                  Column {
                      
@@ -43,7 +45,9 @@ class RecipeListFragment : Fragment(){
                          onChangeCategoryScrollPosition =
                              viewModel::onChangeCategoryScrollPosition
                      )
-                     
+
+                     CircularIndeterminateProgressBar(isDisplayed = loading)
+
                      LazyColumn{
                          itemsIndexed(
                              items = recipes

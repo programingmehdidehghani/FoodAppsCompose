@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.foodapps.domain.model.Recipe
 import com.example.foodapps.repository.RecipeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Named
@@ -28,18 +29,26 @@ class RecipeListViewModel
 
     var categoryScrollPosition: Float = 0f
 
+    val loading = mutableStateOf(false)
+
     init {
         newSearch()
     }
 
     fun newSearch(){
         viewModelScope.launch {
+            loading.value = true
+
+            delay(2000)
+
             val result = repository.search(
                 token = token,
                 page = 1,
                 query = query.value
             )
             recipes.value = result
+
+            loading.value = false
         }
     }
 
