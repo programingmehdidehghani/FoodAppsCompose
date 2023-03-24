@@ -21,6 +21,8 @@ fun CircularIndeterminateProgressBar(
     isDisplayed: Boolean
 ) {
     if (isDisplayed) {
+       
+
         ConstraintLayout(
             modifier = Modifier.fillMaxSize()
         ) {
@@ -52,6 +54,19 @@ fun CircularIndeterminateProgressBar(
 
 private fun myDecoupledConstraints(verticalBias: Float) : androidx.constraintlayout.compose.ConstraintSet {
       return ConstraintSet{
+          val guideLine = createGuidelineFromTop(verticalBias)
+          val progressBar = createRefFor("progressBar")
+          val text = createRefFor("text")
 
+          constrain(progressBar){
+              top.linkTo(guideLine)
+              start.linkTo(parent.start)
+              end.linkTo(parent.end)
+          }
+          constrain(text){
+              top.linkTo(progressBar.bottom)
+              start.linkTo(parent.start)
+              end.linkTo(parent.end)
+          }
       }
 }
