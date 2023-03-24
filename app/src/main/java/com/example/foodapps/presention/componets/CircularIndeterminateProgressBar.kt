@@ -10,8 +10,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 
 @Composable
 fun CircularIndeterminateProgressBar(
@@ -22,10 +25,10 @@ fun CircularIndeterminateProgressBar(
             modifier = Modifier.fillMaxSize()
         ) {
             val (progressBar, text) = createRefs()
+            val bottomGuideline = createGuidelineFromBottom(0.3f)
             CircularProgressIndicator(
                 modifier = Modifier.constrainAs(progressBar) {
-                    top.linkTo(parent.top)
-                    bottom.linkTo(parent.bottom)
+                    bottom.linkTo(bottomGuideline)
                     start.linkTo(parent.start)
                     end.linkTo(parent.end)
                 }, color = MaterialTheme.colors.primary
@@ -34,10 +37,21 @@ fun CircularIndeterminateProgressBar(
                 text = "Loading ....",
                 style = TextStyle(
                     color = Color.Black,
-                    fontSize = 
-                )
+                    fontSize = 15.sp
+                ),
+                modifier = Modifier.constrainAs(text){
+                    top.linkTo(progressBar.bottom)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
             )
         }
     }
 
+}
+
+private fun myDecoupledConstraints(verticalBias: Float) : androidx.constraintlayout.compose.ConstraintSet {
+      return ConstraintSet{
+
+      }
 }
