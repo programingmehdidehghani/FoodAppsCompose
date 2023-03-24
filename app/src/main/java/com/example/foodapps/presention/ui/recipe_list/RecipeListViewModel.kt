@@ -74,6 +74,6 @@ class RecipeListViewModel
     }
 
     fun onChangeCategoryScrollPosition(position: Int){
-        categoryScrollPosition = position
+        categoryScrollPosition = position.toFloat()
     }
 }
