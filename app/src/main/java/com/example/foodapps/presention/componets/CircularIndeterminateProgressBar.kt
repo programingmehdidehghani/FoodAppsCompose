@@ -7,6 +7,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
@@ -21,32 +22,39 @@ fun CircularIndeterminateProgressBar(
     isDisplayed: Boolean
 ) {
     if (isDisplayed) {
-       
-
-        ConstraintLayout(
-            modifier = Modifier.fillMaxSize()
+        BoxWithConstraints(
+             modifier = Modifier.fillMaxSize()
         ) {
-            val (progressBar, text) = createRefs()
-            val bottomGuideline = createGuidelineFromBottom(0.3f)
-            CircularProgressIndicator(
-                modifier = Modifier.constrainAs(progressBar) {
-                    bottom.linkTo(bottomGuideline)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                }, color = MaterialTheme.colors.primary
-            )
-            Text(
-                text = "Loading ....",
-                style = TextStyle(
-                    color = Color.Black,
-                    fontSize = 15.sp
-                ),
-                modifier = Modifier.constrainAs(text){
-                    top.linkTo(progressBar.bottom)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                }
-            )
+            val constraints = if (minHeight < 600.dp){
+               myDecoupledConstraints(0.3f)
+            }else{
+                myDecoupledConstraints(0.7f)
+            }
+            ConstraintLayout(
+                modifier = Modifier.fillMaxSize()
+            ) {
+                val (progressBar, text) = createRefs()
+                val bottomGuideline = createGuidelineFromBottom(0.3f)
+                CircularProgressIndicator(
+                    modifier = Modifier.constrainAs(progressBar) {
+                        bottom.linkTo(bottomGuideline)
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                    }, color = MaterialTheme.colors.primary
+                )
+                Text(
+                    text = "Loading ....",
+                    style = TextStyle(
+                        color = Color.Black,
+                        fontSize = 15.sp
+                    ),
+                    modifier = Modifier.constrainAs(text){
+                        top.linkTo(progressBar.bottom)
+                        start.linkTo(parent.start)
+                        end.linkTo(parent.end)
+                    }
+                )
+            }
         }
     }
 
